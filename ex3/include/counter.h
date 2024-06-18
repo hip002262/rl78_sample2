@@ -134,7 +134,7 @@ void	CNT_Counter( void );
 
 void	BCNT_Initialize( void );
 void	BCNT_Counter_Clear( void );
-UCHAR	BCNT_Evaluate( UCHAR mr, UCHAR cp0, UCHAR cp1, UCHAR max, int* flag );
+UCHAR	BCNT_Evaluate( UCHAR mr, UCHAR cp0, UCHAR cp1, UCHAR max, UCHAR* flag );
 void	BCNT_Counter( void );
 
 #endif /* _COUNTER_H_ */

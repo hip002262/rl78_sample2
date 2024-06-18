@@ -66,7 +66,7 @@ ST_DTC_DATA __near dtc_controldata[24];
 	UCHAR F0919 = 0;
 	UCHAR F0920 = 0;
 	UCHAR F1321 = 0;
-	int   flag  = 0;
+	UCHAR flag  = 0;
 /*----------------------------*/
 
 void panel_init0(void)

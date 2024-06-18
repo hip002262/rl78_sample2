@@ -198,7 +198,7 @@ void BCNT_Counter_Clear( void )
 *                maximum value
 * Return Value : Count value of binary counter
 ********************************************************************************/
-UCHAR BCNT_Evaluate( UCHAR mr, UCHAR cp0, UCHAR cp1, UCHAR max, int* flag )
+UCHAR BCNT_Evaluate( UCHAR mr, UCHAR cp0, UCHAR cp1, UCHAR max, UCHAR* flag )
 {
 	UCHAR	lastcp0;	/* Last input value of cp0 terminal */
 	UCHAR	lastcp1;	/* Last input value of cp1 terminal */
@@ -241,7 +241,9 @@ UCHAR BCNT_Evaluate( UCHAR mr, UCHAR cp0, UCHAR cp1, UCHAR max, int* flag )
 	if (count > max) {
 		/* (Count value of binary counter)<-0 */
 		count = 0;
-		*flag = 1;
+		
+		*flag = ~(*flag) & 0x01; 
+	
 	}
 	
 	/* This value of cp0 of binary counter is preserved. */
