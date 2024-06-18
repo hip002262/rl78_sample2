@@ -198,7 +198,7 @@ void BCNT_Counter_Clear( void )
 *                maximum value
 * Return Value : Count value of binary counter
 ********************************************************************************/
-UCHAR BCNT_Evaluate( UCHAR mr, UCHAR cp0, UCHAR cp1, UCHAR max, UCHAR* flag )
+UCHAR BCNT_Evaluate( UCHAR mr, UCHAR cp0, UCHAR cp1, UCHAR max )
 {
 	UCHAR	lastcp0;	/* Last input value of cp0 terminal */
 	UCHAR	lastcp1;	/* Last input value of cp1 terminal */
@@ -218,7 +218,7 @@ UCHAR BCNT_Evaluate( UCHAR mr, UCHAR cp0, UCHAR cp1, UCHAR max, UCHAR* flag )
 			if (cp1 == LOW) {
 				if (lastcp1 == HIGH) {
 					/* (Count value of binary counter)++ */
-					count++;
+					count--;
 				}
 			}
 		}
@@ -226,7 +226,7 @@ UCHAR BCNT_Evaluate( UCHAR mr, UCHAR cp0, UCHAR cp1, UCHAR max, UCHAR* flag )
 			if (lastcp0 == LOW) {
 				if (cp1 == HIGH) {
 					/* (Count value of binary counter)++ */
-					count++;
+					count--;
 				}
 			}
 		}
@@ -234,15 +234,14 @@ UCHAR BCNT_Evaluate( UCHAR mr, UCHAR cp0, UCHAR cp1, UCHAR max, UCHAR* flag )
 	
 	else {
 		/* (Count value of binary counter)<-0 */
-		count = 0;
+		count = 9;
 	}
 	
 	/* If the count value is larger than the count maximum value, it returns it to 0. */
-	if (count > max) {
+	if (count < 0 || count > max) {
 		/* (Count value of binary counter)<-0 */
-		count = 0;
+		count = 9;
 		
-		*flag = ~(*flag) & 0x01; 
 	
 	}
 	
