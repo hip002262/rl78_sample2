@@ -74,7 +74,7 @@ Macro definitions
 		UCHAR ucret;															\
 		ucret = DGIN_getValue(Port, Value/10, (UCHAR)Trig);						\
 		if (Active == 1) {														\
-			Fout = ucret & 0x01;												\
+			Fout = ucret & 0x01;									\
 		}																		\
 		else {																	\
 			Fout = ~ucret & 0x01;												\

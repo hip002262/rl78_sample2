@@ -91,8 +91,8 @@ void main( void )
 ********************************************************************************/
 void main_loop( void )
 {
-	while(1) {
 
+	while(1) {
 		/* Panel proccessing */
 		panel();
 
